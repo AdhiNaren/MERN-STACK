@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Albums and Artists</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb, #a1c4fd);
+            background-size: 400% 400%;
+            animation: gradient 30s ease infinite;
+            color: #fff;
+        }
+
+        h1{
+            text-align: center;
+            padding: 50px;
+            background-image: url(https://i.pinimg.com/originals/1c/64/c2/1c64c25b533d17337878a99c65b04479.jpg);
+
+            margin: 0;
+            color: #d097cf;
+            text-shadow:4px 1px 1px  #615a5a;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 20px;
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 10px;
+        }
+
+        .column {
+            flex: 1;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .column h2 {
+            text-align: center;
+            padding:10px ;
+            background: #505e77;
+            border-radius:10px ;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            color: white;
+        }
+
+        .item {
+            text-align: center;
+            margin-bottom: 15px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .item img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .item span {
+            display: block;
+            font-size: 1em;
+            font-weight: bold;
+            color: #333;
+        }
+
+        /* Hover effect for both artist and corresponding album */
+        .highlight img {
+            transform: translateY(-10px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <h1>Music Library </h1>
+    <div class="container">
+        <!-- Artist Column -->
+        <div class="column">
+            <h2>Artists</h2>
+            <div class="item" data-pair="album1">
+                <img src="https://1.bp.blogspot.com/-ESeLwbNMxZY/Xq1SWT7LzCI/AAAAAAAABnA/MRyBXSz9DpAN9kqSiMuDwua4KiR6MDkogCLcBGAsYHQ/s1600/1567494100-ilayaraja111.jpg" alt="Artist 1">
+                <span>Isai Mendalan</span>
+            </div>
+            <div class="item" data-pair="album2">
+                <img src="https://i2.cinestaan.com/image-bank/1500-1500/52001-53000/52899.jpg" alt="Artist 2">
+                <span>Periya Bhai</span>
+            </div>
+            <div class="item" data-pair="album3">
+                <img src="https://www.filmibeat.com/fanimg/650x100/fan_images/harris-jayaraj-photos-images-51397.jpg" alt="Artist 3">
+                <span>Harris Mams</span>
+            </div>
+            <div class="item" data-pair="album4">
+                <img src="https://www.gethucinema.com/wp-content/uploads/2023/06/SanthoshNarayanan-72.jpg" alt="Artist 4">
+                <span>SaNa</span>
+            </div>
+        </div>
+
+        <!-- Album Column -->
+        <div class="column">
+            <h2>Albums</h2>
+            <div class="item" id="album1">
+                <img src="https://image.airtel.tv/RAJTV/RAJTV_MOVIE_61f8d469846ff44be4d97752/LANDSCAPE_169/LANDSCAPE_169_ANNAKKILI-.jpg" alt="Album 1">
+                <span>Annakili</span>
+            </div>
+            <div class="item" id="album2">
+                <img src="https://www.themoviedb.org/t/p/original/6kHsXNX6pJ0VQSSHWBTNCIcon4R.jpg" alt="Album 2">
+                <span>Roja</span>
+            </div>
+            <div class="item" id="album3">
+                <img src="https://i.ytimg.com/vi/BsQN4O0ErMc/maxresdefault.jpg" alt="Album 3">
+                <span>Minnale</span>
+            </div>
+            <div class="item" id="album4">
+                <img src="https://flxt.tmsimg.com/assets/p11008623_p_v7_aa.jpg" alt="Album 4">
+                <span>Attakathi</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Add hover effect using JavaScript
+        const artistItems = document.querySelectorAll('.column:first-child .item');
+        const albumItems = document.querySelectorAll('.column:last-child .item');
+
+        artistItems.forEach(artist => {
+            artist.addEventListener('mouseover', () => {
+                const albumId = artist.getAttribute('data-pair');
+                const album = document.getElementById(albumId);
+
+                // Highlight artist and corresponding album
+                artist.classList.add('highlight');
+                album.classList.add('highlight');
+            });
+
+            artist.addEventListener('mouseout', () => {
+                const albumId = artist.getAttribute('data-pair');
+                const album = document.getElementById(albumId);
+
+                // Remove highlight
+                artist.classList.remove('highlight');
+                album.classList.remove('highlight');
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bird Flying Animation</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background: linear-gradient(to bottom, #87CEEB, #f0f8ff);
+            height: 100vh;
+        }
+
+        .bird {
+            position: absolute;
+            top: 50%;
+            left: -100px;
+            transform: translateY(-50%);
+            animation: fly 8s linear infinite, flap 0.5s steps(2) infinite;
+        }
+
+        .bird img {
+            width: 100px;
+            height: auto;
+        }
+
+        @keyframes fly {
+            0% {
+                left: -100px;
+                top: 50%;
+            }
+            50% {
+                top: 30%;
+            }
+            100% {
+                left: 110%;
+                top: 50%;
+            }
+        }
+
+        @keyframes flap {
+            0% {
+                transform: translateY(-50%) scale(1, 1);
+            }
+            50% {
+                transform: translateY(-50%) scale(1, 0.9);
+            }
+            100% {
+                transform: translateY(-50%) scale(1, 1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bird">
+        <img src="https://tellthebirds.com/wp-content/uploads/2017/09/Flying_Birds_Silhouettes_Transparent_PNG_Clip_Art_Image.png">
+    </div>
+</body>
+</html>
